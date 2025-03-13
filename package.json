@@ -9,7 +9,9 @@
   "author": "Deivid Cesar Lemes",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^14.1.0",
     "testedot": "file:"
+  },
+  "devDependencies": {
+    "cypress": "^14.2.0"
   }
 }
