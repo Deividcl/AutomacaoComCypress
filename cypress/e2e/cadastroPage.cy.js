@@ -76,7 +76,7 @@ describe('Testes de login e navegação para cadastro de usuário', () => {
         cy.get(elementos.alertaDelete).should('be.visible').contains('Successfully Deleted')
     })
     it('Buscar usuário não cadastrado: ', () => {
-        cy.get(elementos.inputBuscarUserName).type('Usuario nao cadastrado')
+        cy.get(elementos.inputBuscarUserName).type('Teste Deivid - DOT')
         cy.get(elementos.botaoPesquisar).click()
         cy.get(elementos.alerta).should('be.visible').contains('No Records Found')
     })
