@@ -1,4 +1,4 @@
-export const elementos = {
+export const elements = {
     logingText: ':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input',
     passwordText: ':nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-input',
     loginButton: '.oxd-button',
