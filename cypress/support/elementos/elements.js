@@ -30,5 +30,9 @@ export const elementos = {
     buttonConfirmDelete: '.oxd-button--label-danger',
     validationUsername: ':nth-child(4) > .oxd-input-group > .oxd-text',
     validationPassword: ':nth-child(1) > .oxd-input-group > .oxd-text',
-    validationConfirmPassword: ':nth-child(2) > .oxd-input-group > .oxd-text'
+    validationConfirmPassword: ':nth-child(2) > .oxd-input-group > .oxd-text',
+    alertLogin: '.oxd-alert-content > .oxd-text',
+    textRequired: '.oxd-input-group > .oxd-text',
+    menuLogout: '.oxd-userdropdown-tab > .oxd-icon',
+    buttonLogout: ':nth-child(4) > .oxd-userdropdown-link'
 };
