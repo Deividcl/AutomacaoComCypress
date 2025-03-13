@@ -44,11 +44,13 @@ Cypress.Commands.add('buscarUsuario', (userName) => {
     cy.get(elementos.botaoEditar).click();
     cy.get(elementos.comboStatus).click();
     cy.get(elementos.comboStatusOptionsDisabled).click();
+    cy.intercept('GET', '**/api/v2/admin/users*').as('getUsers'); // Interceptando a requisição GET
     cy.get(elementos.botaoSalvar).click();
-    cy.wait(4000);
+    cy.wait('@getUsers').its('response.statusCode').should('eq', 200);
     cy.get(elementos.campoBuscarUserName, { timeout: 10000 }).should('be.visible').type(userName);
+    cy.intercept('GET', '**/api/v2/admin/users*').as('getUsers'); // Interceptando a requisição GET
     cy.get(elementos.botaoPesquisar).click();
-    cy.wait(2000);
+    cy.wait('@getUsers').its('response.statusCode').should('eq', 200);
     cy.get(elementos.textoStatus).should('be.visible').contains('Disabled');
     cy.get(elementos.botaoExcluir).click();
     cy.get(elementos.mensagemDelete).contains('The selected record will be permanently deleted. Are you sure you want to continue?');

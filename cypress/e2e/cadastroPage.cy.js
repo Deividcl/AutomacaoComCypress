@@ -1,7 +1,6 @@
 /// <reference types="cypress" />
 import { elementos } from '../support/elementos/elements.js'
 describe('Testes de login e navegação para cadastro de usuário', () => {
-    //Mapeando os elementos da tela para uso nos testes
 
     beforeEach(() => {
         cy.login('Admin', 'admin123')
