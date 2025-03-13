@@ -43,19 +43,7 @@ Cypress.Commands.add('buscarUsuario', (userName) => {
     cy.get(elementos.buttonSearch).click();  
     cy.wait('@getUsers').its('response.statusCode').should('eq', 200);
     cy.get(elementos.textStatus).should('be.visible').contains('Enabled');
-    cy.get(elementos.buttonEdit).click();
-    cy.get(elementos.dropdownStatus).click();
-    cy.get(elementos.dropdownStatusOptionsDisabled).click();
-    cy.intercept('GET', '**/web/index.php/api/v2/admin/users?limit=50&offset=0&sortField=u.userName&sortOrder=ASC*').as('getUsers2')
-    cy.get(elementos.buttonSave).click();     
-    cy.wait('@getUsers2').its('response.statusCode').should('eq', 200);
-    cy.get(elementos.fieldSearchUserName).should('be.visible').type(userName);    
-    cy.get(elementos.buttonSearch).click();
-    cy.get(elementos.textStatus).should('be.visible').contains('Disabled');
-    cy.get(elementos.buttonDelete).click();
-    cy.get(elementos.mensageDelete).contains('The selected record will be permanently deleted. Are you sure you want to continue?');
-    cy.get(elementos.buttonConfirmDelete).contains('Yes, Delete').click();
-    cy.get(elementos.alertDelete).should('be.visible').contains('Successfully Deleted');
+    
 });
 
 //

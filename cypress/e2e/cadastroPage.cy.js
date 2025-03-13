@@ -18,7 +18,20 @@ describe('Testes de login e navegação para cadastro de usuário', () => {
         cy.get(elementos.validationConfirmPassword).contains('Passwords do not match')
     })
     it('Buscar usuário cadastrado e remove-lo: ', () => {
-        cy.buscarUsuario('Teste Deivid - DOT');
+        cy.buscarUsuario('Teste Deivid - DOT')
+        cy.get(elementos.buttonEdit).click();
+        cy.get(elementos.dropdownStatus).click();
+        cy.get(elementos.dropdownStatusOptionsDisabled).click();
+        cy.intercept('GET', '**/web/index.php/api/v2/admin/users?limit=50&offset=0&sortField=u.userName&sortOrder=ASC*').as('getUsers2')
+        cy.get(elementos.buttonSave).click();     
+        cy.wait('@getUsers2').its('response.statusCode').should('eq', 200);
+        cy.get(elementos.fieldSearchUserName).should('be.visible').type('Teste Deivid - DOT');    
+        cy.get(elementos.buttonSearch).click();
+        cy.get(elementos.textStatus).should('be.visible').contains('Disabled');
+        cy.get(elementos.buttonDelete).click();
+        cy.get(elementos.mensageDelete).contains('The selected record will be permanently deleted. Are you sure you want to continue?');
+        cy.get(elementos.buttonConfirmDelete).contains('Yes, Delete').click();
+        cy.get(elementos.alertDelete).should('be.visible').contains('Successfully Deleted');
     })
     it('Buscar usuário não cadastrado: ', () => {
         cy.get(elementos.fieldSearchUserName).type('Teste Deivid - DOT')
