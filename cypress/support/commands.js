@@ -1,5 +1,5 @@
 import { elementos } from '../support/elementos/elements.js'
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker'
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -46,8 +46,9 @@ Cypress.Commands.add('cadastrarUsuario', (employeeName, password) => {
 
 // Comando para buscar um usuário
 Cypress.Commands.add('buscarUsuario', (userName) => {
-    cy.get(elementos.fieldSearchUserName).type(userName)
-    cy.intercept('GET', '**/web/index.php/api/v2/admin/users?limit=50&offset=0&username=Admin&sortField=u.userName&sortOrder=ASC').as('getUsers')  
+    cy.get(elementos.menuAdmin).click()
+    cy.get(elementos.fieldSearchUserName).should('be.visible').type(userName)
+    cy.intercept('GET', '**/web/index.php/api/v2/admin/users*').as('getUsers')  
     cy.get(elementos.buttonSearch).click()  
     cy.wait('@getUsers').its('response.statusCode').should('eq', 200)
     cy.get(elementos.textStatus).should('be.visible').contains('Enabled')
