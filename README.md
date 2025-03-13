@@ -45,6 +45,6 @@ Se você não tiver o Node.js, pode baixar e instalar a partir de [nodejs.org](h
 ## Estrutura de Comandos Customizados
 Para facilitar o reuso de código, criei o comando de login em `cypress/support/commands.js`. 
 Esse comando, além de fazer login, acessa também diretamente o menu que será usado para o teste.
-A spec possui 2 suites de testes
+A spec possui 4 suites de testes
   
 
