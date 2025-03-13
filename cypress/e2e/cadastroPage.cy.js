@@ -21,10 +21,14 @@ describe('Testes de login e navegação para cadastro de usuário', () => {
         alerta: '.oxd-toast',
         alertaDelete: '.oxd-text--toast-message',
         textoStatus: '.oxd-table-card > .oxd-table-row > :nth-child(5)',
+        textoUsername: '.oxd-table-card > .oxd-table-row > :nth-child(2) > div',
         botaoEditar: '.oxd-table-cell-actions > :nth-child(2) > .oxd-icon',
         botaoExcluir: '.oxd-table-cell-actions > :nth-child(1) > .oxd-icon',
         mensagemDelete: '.orangehrm-text-center-align > .oxd-text',
-        botaoConfirmarExclusao: '.oxd-button--label-danger'
+        botaoConfirmarExclusao: '.oxd-button--label-danger',
+        validacaoUsername: ':nth-child(4) > .oxd-input-group > .oxd-text',
+        validacaoPassword: ':nth-child(1) > .oxd-input-group > .oxd-text',
+        validacaoConfirmacaoPassword: ':nth-child(2) > .oxd-input-group > .oxd-text'
     }
 
     beforeEach(() => {
@@ -44,25 +48,36 @@ describe('Testes de login e navegação para cadastro de usuário', () => {
         cy.get(elementos.botaoSalvar).contains(' Save ').click()
         cy.get(elementos.alerta).should('be.visible')
     })
+    it('Validação das regras de cadastro de usuário: ', () => {
+        cy.get(elementos.botaoNovoUser).contains(' Add ').click()
+        cy.get(elementos.inputUserName).type('Teste Deivid - DOT')
+        cy.get(elementos.validacaoUsername).contains('Already exists')
+        cy.get(elementos.inputPassword).type('A123456')
+        cy.get(elementos.validacaoPassword).contains('Your password must contain minimum 1 lower-case letter')
+        cy.get(elementos.inputConfirmarPassword).type('a123456')
+        cy.get(elementos.validacaoConfirmacaoPassword).contains('Passwords do not match')
+    })
     it('Buscar usuário cadastrado: ', () => {
         cy.get(elementos.inputBuscarUserName).type('Teste Deivid - DOT')
-        cy.get(elementos.botaoPesquisar).click()
-        cy.wait(2000)
+        cy.get(elementos.botaoPesquisar).click().wait(2000)
         cy.get(elementos.textoStatus).should('be.visible').contains('Enabled')
         cy.get(elementos.botaoEditar).click()
         cy.get(elementos.comboStatus).click()
         cy.get(elementos.comboStatusOptionsDisabled).contains('Disabled').click()
         cy.get(elementos.botaoSalvar).click()
-        cy.wait(6000)
+        .wait(4000)
         cy.get(elementos.inputBuscarUserName, {timeout: 10000}).should('be.visible').type('Teste Deivid - DOT')
         cy.get(elementos.botaoPesquisar).click()
-        cy.wait(2000)
+        .wait(2000)
         cy.get(elementos.textoStatus).should('be.visible').contains('Disabled')
         cy.get(elementos.botaoExcluir).click()
         cy.get(elementos.mensagemDelete).contains('The selected record will be permanently deleted. Are you sure you want to continue?')
         cy.get(elementos.botaoConfirmarExclusao).contains('Yes, Delete').click()
         cy.get(elementos.alertaDelete).should('be.visible').contains('Successfully Deleted')
-        
     })
-
+    it('Buscar usuário não cadastrado: ', () => {
+        cy.get(elementos.inputBuscarUserName).type('Usuario nao cadastrado')
+        cy.get(elementos.botaoPesquisar).click()
+        cy.get(elementos.alerta).should('be.visible').contains('No Records Found')
+    })
 })
