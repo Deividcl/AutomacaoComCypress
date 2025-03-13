@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Testes de interface com Cypress 14 para DOT
 
 Este projeto contém testes automatizados de interface utilizando o **Cypress** para verificar a funcionalidade de cadastro de usuários no sistema.
@@ -47,4 +48,6 @@ Para facilitar o reuso de código, criei o comando de login em `cypress/support/
 Esse comando, além de fazer login, acessa também diretamente o menu que será usado para o teste.
 A spec possui 4 suites de testes
   
+=======
+>>>>>>> 39d9b1c (Salvando alterações locais antes do pull)
 
