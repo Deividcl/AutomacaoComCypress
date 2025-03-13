@@ -12,6 +12,7 @@
     "testedot": "file:"
   },
   "devDependencies": {
-    "cypress": "^14.2.0"
+    "cypress": "^14.2.0",
+    "dotenv": "^16.4.7"
   }
 }
