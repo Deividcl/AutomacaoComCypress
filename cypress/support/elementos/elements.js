@@ -4,6 +4,8 @@ export const elementos = {
     loginButton: '.oxd-button',
     menuAdmin: ':nth-child(1) > .oxd-main-menu-item > .oxd-text',
     buttonNewUser: '.orangehrm-header-container > .oxd-button',
+    buttonCancel: '.oxd-button--ghost',
+    dropDownUserRoleHome: ':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-select-wrapper > .oxd-select-text',
     dropdownUserRole: ':nth-child(1) > .oxd-input-group > :nth-child(2) > .oxd-select-wrapper > .oxd-select-text > .oxd-select-text-input',
     dropdownUserOptionsAdmin: '.oxd-select-dropdown > :nth-child(2)',
     dropdownUserOptionsESS: '.oxd-select-dropdown > :nth-child(3)',
