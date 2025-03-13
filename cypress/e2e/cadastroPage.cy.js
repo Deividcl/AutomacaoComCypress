@@ -57,7 +57,7 @@ describe('Testes de login e navegação para cadastro de usuário', () => {
         cy.get(elementos.inputConfirmarPassword).type('a123456')
         cy.get(elementos.validacaoConfirmacaoPassword).contains('Passwords do not match')
     })
-    it('Buscar usuário cadastrado: ', () => {
+    it('Buscar usuário cadastrado e remove-lo: ', () => {
         cy.get(elementos.inputBuscarUserName).type('Teste Deivid - DOT')
         cy.get(elementos.botaoPesquisar).click().wait(2000)
         cy.get(elementos.textoStatus).should('be.visible').contains('Enabled')
