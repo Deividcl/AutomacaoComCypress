@@ -15,7 +15,7 @@ Se você não tiver o Node.js, pode baixar e instalar a partir de [nodejs.org](h
 
 ## Instalação
 
-1. Clone o repositório do projeto para a sua máquina local (branch master):
+1. Clone o repositório do projeto para a sua máquina local (branch main):
     ```bash
     git clone https://github.com/Deividcl/TesteDot.git
     ```
@@ -44,6 +44,6 @@ Se você não tiver o Node.js, pode baixar e instalar a partir de [nodejs.org](h
 
 ## Estrutura de Comandos Customizados
 Para facilitar o reuso de código, criei o comando de login em `cypress/support/commands.js`. 
-Esse comando, além de fazer login, acessa também diretamente o menu que será usado para o teste.
+Esse comando, além de fazer login, acessa também diretamente o menu que será usado para o teste, busca usuários e cadastra usuários
 A spec possui 4 suites de testes
   
