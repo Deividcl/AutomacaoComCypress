@@ -15,7 +15,7 @@ Se você não tiver o Node.js, pode baixar e instalar a partir de [nodejs.org](h
 
 ## Instalação
 
-1. Clone o repositório do projeto para a sua máquina local (branch main):
+1. Clone o repositório do projeto para a sua máquina local (branch master):
     ```bash
     git clone https://github.com/Deividcl/TesteDot.git
     ```
