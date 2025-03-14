@@ -29,6 +29,15 @@ Se você não tiver o Node.js, pode baixar e instalar a partir de [nodejs.org](h
     ```
     Isso irá instalar o Cypress e todas as dependências necessárias.
 
+    **Caso seja necessário, instale o faker:**
+    ```bash
+    npm install faker --save-dev
+    ```
+    E instale o dotenv
+    ```bash
+    npm install dotenv --save
+    ```
+
 ## Executando os Testes
 1. Para executar os testes com o Cypress, use o seguinte comando:
     ```bash
@@ -44,6 +53,6 @@ Se você não tiver o Node.js, pode baixar e instalar a partir de [nodejs.org](h
 
 ## Estrutura de Comandos Customizados
 Para facilitar o reuso de código, criei o comando de login em `cypress/support/commands.js`. 
-Esse comando, além de fazer login, acessa também diretamente o menu que será usado para o teste, busca usuários e cadastra usuários
-A spec possui 4 suites de testes
+Esse comando, além de fazer login e suas simulações de falha, acessa também diretamente o menu que será usado para o teste, busca usuários e cadastra usuários
+A spec possui 3 suites de testes
   
