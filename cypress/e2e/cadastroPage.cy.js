@@ -5,20 +5,22 @@ describe('Testes de login e navegação para cadastro de usuário', () => {
         cy.loginSuccess()
     })
 
-    it(`Cadastrar usuário com sucesso:
-        Buscar usuário cadastrador:
-        Exclusão de usuário cadastrado:
-        Buscar usuário inexistente:
-        `, () => {
+    it('CRUD de registro de usuário', () => {
+        // Register user successfully
         cy.registerUser('Ranga Akunuri', 'a123456')
+
+        // Search registered user
         cy.searchUser('Admin')
+
+        // Edit registered user
         cy.get(elements.buttonEdit).click()
         cy.get(elements.dropdownStatus).click()
         cy.get(elements.dropdownStatusOptionsDisabled).click()
         cy.intercept('GET', '**/web/index.php/api/v2/admin/users*').as('getUsers2')
         cy.get(elements.buttonSave).click()     
         cy.wait('@getUsers2').its('response.statusCode').should('eq', 200)  
-        cy.get(elements.buttonSearch).click()
+
+        // Delete registered user
         cy.get(elements.buttonDelete).eq(2).click()
         cy.get(elements.mensageDelete).contains('The selected record will be permanently deleted. Are you sure you want to continue?')
         cy.get(elements.buttonConfirmDelete).contains('Yes, Delete').click()
@@ -42,10 +44,15 @@ describe('Testes de login e navegação para cadastro de usuário', () => {
        
     })
     it('Teste de login: ', () => {
+        // Execute logout  
         cy.get(elements.menuLogout).should('be.visible').click()
         cy.get(elements.buttonLogout).click()
+
+        // Execute with invalid username and password  
         cy.loginFailure('ErroUser', 'ErroSenha')
         cy.get(elements.alertLogin).should('be.visible').contains('Invalid credentials')
+
+        // Execute with empty password  
         cy.loginFailure('Admin', ' ')
         cy.get(elements.textRequired).should('be.visible').contains('Required')
     })
