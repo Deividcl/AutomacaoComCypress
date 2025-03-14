@@ -52,7 +52,22 @@ Se você não tiver o Node.js, pode baixar e instalar a partir de [nodejs.org](h
     Esse comando executa todos os testes de forma headless (sem interface gráfica).
 
 ## Estrutura de Comandos Customizados
-Para facilitar o reuso de código, criei o comando de login em `cypress/support/commands.js`. 
-Esse comando, além de fazer login e suas simulações de falha, acessa também diretamente o menu que será usado para o teste, busca usuários e cadastra usuários
+Para facilitar o reuso de código, criei algiuns comandos no arquivo `cypress/support/commands.js` 
+Esses comandos são:
+- **Login Success** (Executar login com sucesso no sistema)
+- **Login Failure** (Executar tentativas de login falhas no sistema e logout após login com sucesso)
+- **Seach User** (Buscar usuários fixo no sistema)
+- **Register User** (Registrar novo usuário)
+
+
 A spec possui 3 suites de testes
-  
+- **CRUD de registro de usuário** (Está dividida para que todo o CRUD seja executado sem dependencia)
+- **Teste de validação de regras** (Está validando algumas regras existentes na tela de cadastro de usuários)
+- **Teste de login** (Está validando as interações de login inválidas e logout do sistema com sucesso)
+
+## Para melhorar a legibilidade do código criei o arquivo elements.js e .env
+
+- O arquivo elements possui toda a estrura de mapeamento de elementos disponiveis e utilizaveis no código.
+- O arquivo .env é responsável por armazenar os dados de login no sistema
+
+
