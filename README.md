@@ -1,4 +1,4 @@
-# Testes de interface com Cypress 14 para DOT
+# Testes de interface com Cypress 14
 
 Este projeto contém testes automatizados de interface utilizando o **Cypress** para verificar a funcionalidade de cadastro de usuários no sistema.
 Este projeto foi feito usando um site de teste disponivel para a comunidade de testes utilizar a fins de estudo. Segue o link:
